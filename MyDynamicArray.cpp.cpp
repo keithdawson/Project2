@@ -7,7 +7,7 @@ using namespace std;
 class MyDynamicArray {
 private:
 	int *pa; // points to the array
-	int len; // the # elements
+	int len; // the # of elements intitalized
 	int nextIndex; // the next highest index value
 public:
 	MyDynamicArray(); // the constructor
@@ -23,18 +23,18 @@ MyDynamicArray::MyDynamicArray() {
 	pa = new int[2];
 	for (int i = 0; i < 2; i++)
 		pa[i] = 0;
-	len = 2;
+	len = 0;
 	nextIndex = 0;
 }
 MyDynamicArray::MyDynamicArray(int s) {
 	pa = new int[s];
 	for (int i = 0; i < s; i++)
 		pa[i] = 0;
-	len = s;
+	len = 0;
 	nextIndex = 0;
 }
 MyDynamicArray::~MyDynamicArray() {
-	delete [] pa;
+	delete[] pa;
 }
 int& MyDynamicArray::operator[](int index) {
 	int *pnewa; // pointer for new array
@@ -55,7 +55,7 @@ int& MyDynamicArray::operator[](int index) {
 void MyDynamicArray::add(int val) {
 	int *pnewa;
 	if (nextIndex == length) {
-		length = length + 10;
+		length = length + 1;
 		pnewa = new int[length];
 		for (int i = 0; i < nextIndex; i++)
 			pnewa[i] = pa[i];
